@@ -1,0 +1,44 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 0px 20px;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    align-items: center;
+}
+
+.nav-items > ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items > ul >li {
+    padding: 10px;
+    margin: 10px;
+}
+
+.res-card{
+    width: 200px;
+  
+}
+
+.res-card:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.res-logo{
+    width: 100%;
+    padding: 0px;
+}
+
+.res-container{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+
+}
