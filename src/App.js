@@ -1,21 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-/*
-header
--logo
--navitems
-body
-- search bar
--card container 
- -- img 
- -- name of rss, start rating, cuisines -- delivery time 
--cards
-footer
-- copyright
--contact 
-
-*/
 
 const Header = () => {
   return (
