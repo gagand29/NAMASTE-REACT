@@ -20,3 +20,19 @@ namaste react
 - Https
 - Tree shaking
 - difference dev and prod bundles
+
+export default component;
+import component from "path"
+
+-Naed Export/Import
+
+export const component;
+import {component } from "path";
+
+
+
+# React Hooks
+
+(as lke normal js utility functions)
+useState()
+useEffect()
