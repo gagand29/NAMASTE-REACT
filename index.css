@@ -37,6 +37,7 @@
 }
 
 .res-container{
+    margin: 20px;
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
@@ -46,4 +47,24 @@
 .filter-btn{
     cursor: pointer;
     margin: 10px;
+}
+
+.shimmer-container{
+    display: flex;
+}
+
+.shimmer-cards{
+    width: 100px;
+    height: 200px;
+    background-color: yellow;
+}
+
+.login{
+    padding: 10px 10px;
+    cursor: pointer;
+    background-color: yellow;
+}
+
+.fiter{
+    display: flex;
 }
