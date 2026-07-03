@@ -12,7 +12,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
+    const data = await fetch("https://corsproxy.io/?url=https://namastedev.com/api/v1/listRestaurants");
     //fetch will return promise
     const json = await data.json();
 
