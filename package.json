@@ -19,13 +19,13 @@
   "license": "ISC",
   "author": "Gagan d",
   "type": "commonjs",
-
   "devDependencies": {
     "parcel": "^2.16.4"
   },
   "dependencies": {
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "react-router": "^7.18.1"
   },
   "browserslist": [
     "last 2 versions"
