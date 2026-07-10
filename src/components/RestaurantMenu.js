@@ -1,25 +1,12 @@
-import {useEffect, useState} from "react";
 import Shimmer from "./Shimmer";
-import { MENU_API } from "../utils/constant";
 
 import {useParams} from "react-router";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
 const {resId} = useParams();
 
-  const [resInfo, setResInfo] = useState(null)
-
-  useEffect(()=>{
-      fetchMenu();
-  },[])
-
-  const fetchMenu = async () =>{
-   const data = await fetch(MENU_API+(resId));
-   const json =await data.json();
-   console.log(json);
-   setResInfo(json);
-
-  };
+  const resInfo = useRestaurantMenu(resId);
 
 
   if (resInfo === null) {
@@ -34,18 +21,27 @@ const {resId} = useParams();
       ?.card?.card?.itemCards || [];
 
   return (
-    <div className="res-menu">
-      <h1>{areaName}</h1>
-      <h1>{cuisines?.join(", ")}</h1>
-      <h1>{locality}</h1>
-      <h1>{totalRatingsString}</h1>
-      <h1>{costForTwo}</h1>
+    <div className="max-w-3xl mx-auto px-4 py-6">
+      <div className="rounded-xl bg-white shadow-md p-5 mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">{areaName}</h1>
+        <h2 className="text-gray-600">{cuisines?.join(", ")}</h2>
+        <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-500">
+          <span>{locality}</span>
+          <span>⭐ {totalRatingsString}</span>
+          <span>{costForTwo}</span>
+        </div>
+      </div>
 
-      <ul>
+      <ul className="divide-y divide-gray-200 rounded-xl bg-white shadow-md">
         {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name} - ₹
-            {(item.card.info.price || item.card.info.defaultPrice) / 100}
+          <li
+            key={item.card.info.id}
+            className="flex justify-between items-center px-5 py-3"
+          >
+            <span className="text-gray-700">{item.card.info.name}</span>
+            <span className="font-medium text-gray-800">
+              ₹{(item.card.info.price || item.card.info.defaultPrice) / 100}
+            </span>
           </li>
         ))}
       </ul>
