@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { getDiscountPercent } from "../utils/getDiscountPercent";
 
-import {Link} from "react-router";
+import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -10,14 +11,19 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
 
-
+  console.log("body rendered", listOfRestaurants);
 
   const fetchData = async () => {
-    const data = await fetch("https://corsproxy.io/?url=https://namastedev.com/api/v1/listRestaurants");
+    const data = await fetch(
+      "https://corsproxy.io/?url=https://namastedev.com/api/v1/listRestaurants",
+    );
     //fetch will return promise
     const json = await data.json();
 
@@ -85,7 +91,12 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant.info} />
+            {/** if the restaurant is promoted addt he [promoted label] */}
+            {getDiscountPercent(restaurant.info) >= 50 ? (
+              <RestaurantCardPromoted resData={restaurant.info} />
+            ) : (
+              <RestaurantCard resData={restaurant.info} />
+            )}
           </Link>
         ))}
       </div>

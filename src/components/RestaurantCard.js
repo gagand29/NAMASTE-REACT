@@ -34,7 +34,9 @@ const RestaurantCard = ({ resData }) => {
 
       <div className="p-3">
         <h3 className="text-lg font-semibold text-gray-800 truncate">{name}</h3>
-        <h4 className="text-sm text-gray-500 truncate">{cuisines.join(", ")}</h4>
+        <h4 className="text-sm text-gray-500 truncate">
+          {cuisines.join(", ")}
+        </h4>
         <div className="flex items-center justify-between mt-2 text-sm text-gray-600">
           <span>⭐ {avgRating}</span>
           <span>{costForTwo}</span>
@@ -43,6 +45,23 @@ const RestaurantCard = ({ resData }) => {
       </div>
     </div>
   );
+};
+
+// higher order component
+
+//input - restaurantCart => Restauarant card promoted
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-1 p-2 rounded-lg">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

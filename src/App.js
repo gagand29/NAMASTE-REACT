@@ -15,7 +15,7 @@ const Grocery = lazy(()=>import ("./components/Grocery"))
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="app min-h-screen bg-gray-50">
       <Header />
       {/** if path = /*/}
       <Outlet />
